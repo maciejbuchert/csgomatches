@@ -1,0 +1,22 @@
+{
+  "name": "polishmatches-ical",
+  "version": "0.0.1",
+  "description": "iCal calendar for upcoming polish matches",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/maciejbuchert/polishmatches-ical.git"
+  },
+  "author": "Maciej Buchert",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/maciejbuchert/polishmatches-ical/issues"
+  },
+  "homepage": "https://github.com/maciejbuchert/polishmatches-ical#readme",
+  "dependencies": {
+    "ical-generator": "^1.9.1"
+  }
+}
