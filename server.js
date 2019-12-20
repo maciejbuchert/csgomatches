@@ -6,8 +6,8 @@ const ics = require('ics'),
     express = require('express'),
     // logFile = fs.createWriteStream(__dirname + '/var/log/debug.log', {flags: 'w'}),
     app = express(),
-    teams = [5378, 8813, 10494, 8068, 10426, 8248, 7681, 9797, 8209],
-    server = app.listen(8080, () => {
+    teams = [10549, 8813, 10494, 8068, 10426, 8248, 7681, 9797, 8209],
+    server = app.listen(process.env.PORT || 8080, () => {
         console.log('listening...');
     });
 
