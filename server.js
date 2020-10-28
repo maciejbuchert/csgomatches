@@ -4,16 +4,14 @@ const ics = require('ics'),
     express = require('express'),
     app = express(),
     countryTeams = [],
-    server = app.listen(process.env.PORT || 8080, () => {
-        console.log('listening...');
-    });
+    server = app.listen(process.env.PORT || 8080);
 
 app.get('/', function (req, res) {
     res.set('Content-Type', 'text/calendar; charset=utf-8');
     res.set('Content-Disposition', 'attachment; filename=invite.ics');
 
     HLTV.getTeamRanking({country: 'Poland'}).then((teams) => {
-        for(i in teams) {
+        for(let i in teams) {
             let team = teams[i];
             countryTeams.push(team.team.id);
         }
@@ -21,7 +19,7 @@ app.get('/', function (req, res) {
         let matches = [];
 
         HLTV.getMatches().then((result) => {
-            for (i in result) {
+            for (let i in result) {
                 if (typeof result[i]['team1'] != 'undefined' || typeof result[i]['team2'] != 'undefined') {
                     if (countryTeams.includes(result[i]['team1']['id']) || countryTeams.includes(result[i]['team2']['id'])) {
                         if (typeof result[i]['date'] != 'undefined') {
@@ -55,14 +53,14 @@ function getMatchObject(data, alarm) {
     if('true' === alarm) {
         alarms.push({
             action: 'audio',
-            trigger: {hours: 1, minutes: 0, before: true},
+            trigger: {hours:1,minutes:0,before:true},
             repeat: 1,
-            attachType: 'VALUE=URI',
+            attachType:'VALUE=URI',
             attach: 'Glass'
         });
     }
 
-    return match = {
+    return {
         start: [year, month, day, hour, minutes],
         duration: {hours: Number(data['format'].replace(/[^0-9]/g, '')), minutes: 0},
         title: data['team1']['name'] + " vs. " + data['team2']['name'],
