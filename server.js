@@ -1,20 +1,12 @@
 const ics = require('ics'),
     moment = require('moment'),
     { HLTV } = require('hltv'),
-    fs = require('fs'),
-    util = require('util'),
     express = require('express'),
-    // logFile = fs.createWriteStream(__dirname + '/var/log/debug.log', {flags: 'w'}),
     app = express(),
     countryTeams = [],
     server = app.listen(process.env.PORT || 8080, () => {
         console.log('listening...');
     });
-
-// console.log = function(d) {
-//     logFile.write(util.format(d) + '\n');
-// };
-
 
 app.get('/', function (req, res) {
     res.set('Content-Type', 'text/calendar; charset=utf-8');
@@ -63,9 +55,9 @@ function getMatchObject(data, alarm) {
     if('true' === alarm) {
         alarms.push({
             action: 'audio',
-            trigger: {hours:1,minutes:0,before:true},
+            trigger: {hours: 1, minutes: 0, before: true},
             repeat: 1,
-            attachType:'VALUE=URI',
+            attachType: 'VALUE=URI',
             attach: 'Glass'
         });
     }
